@@ -1,0 +1,12 @@
+services:
+  phantom-bot:
+    build: .
+    container_name: phantom-bot
+    restart: unless-stopped
+    # Load .env file for secrets
+    env_file:
+      - .env
+    # Bind mount host directory to container directory
+    # This allows rclone.conf to be shared between host and bot
+    volumes:
+      - /data/app:/data/app
